@@ -566,6 +566,57 @@
   },
   {
     "type": "get",
+    "url": "/api/customer/category",
+    "title": "Get Categories",
+    "name": "Get_Categories",
+    "group": "Category",
+    "parameter": {
+      "fields": {
+        "Query String": [
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "store_id",
+            "description": "<p>ID of the store to get categories of.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"categories\": [\n            {\n                \"_id\": \"5cd55cec828e75341ca089cb\",\n                \"status\": 1,\n                \"parent\": null,\n                \"name\": \"Dairy Products\",\n                \"store_id\": \"5cd1259b63aff817c37afb02\",\n                \"created_at\": \"2019-05-10T11:13:48.073Z\",\n                \"updated_at\": \"2019-05-10T11:13:48.073Z\",\n                \"__v\": 0,\n                \"subcategories\": [\n                    {\n                        \"_id\": \"5cd55d96828e75341ca089cc\",\n                        \"status\": 1,\n                        \"parent\": \"5cd55cec828e75341ca089cb\",\n                        \"name\": \"Milk\",\n                        \"store_id\": \"5cd1259b63aff817c37afb02\",\n                        \"created_at\": \"2019-05-10T11:16:38.799Z\",\n                        \"updated_at\": \"2019-05-10T11:16:38.799Z\",\n                        \"__v\": 0\n                    },\n                    {\n                        \"_id\": \"5cdac8de1c9d4400003f31b6\",\n                        \"status\": 2,\n                        \"name\": \"cheese\",\n                        \"store_id\": \"5cd1259b63aff817c37afb02\",\n                        \"parent\": \"5cd55cec828e75341ca089cb\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ValidationError",
+            "description": "<p>Store Id is invalid.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Store Id is invalid:",
+          "content": "{\n    \"success\": false,\n    \"code\": {\n        \"code\": 422,\n        \"name\": \"UNPROCESSABLE_ENTITY\",\n        \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n    },\n    \"singleStringMessage\": \"The Store Id is a required field\",\n    \"error\": {\n        \"validation\": {\n            \"store_id\": [\n                \"The Store Id is a required field\"\n            ]\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/category.js",
+    "groupTitle": "Category"
+  },
+  {
+    "type": "get",
     "url": "/api/customer/store",
     "title": "Get Stores",
     "name": "Get_Stores",
@@ -578,7 +629,7 @@
             "type": "String",
             "optional": false,
             "field": "area_id",
-            "description": "<p>iD of area selected by user.</p>"
+            "description": "<p>ID of area selected by user.</p>"
           }
         ]
       }
