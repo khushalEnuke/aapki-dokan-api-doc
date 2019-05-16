@@ -1,5 +1,75 @@
 define({ "api": [
   {
+    "type": "get",
+    "url": "/api/customer/cities",
+    "title": "Get Cities List",
+    "name": "Cities_List",
+    "group": "Area",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"cities\": [\n            {\n                \"_id\": \"5cd01c1839b32d325085052d\",\n                \"name\": \"Gurgaon\",\n                \"created_at\": \"2019-05-06T11:35:52.520Z\",\n                \"updated_at\": \"2019-05-06T11:35:52.520Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"5cd02537b1ef5e3bfb165f5c\",\n                \"name\": \"Gurgaon New\",\n                \"created_at\": \"2019-05-06T12:14:47.699Z\",\n                \"updated_at\": \"2019-05-06T12:14:47.699Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/common.js",
+    "groupTitle": "Area"
+  },
+  {
+    "type": "get",
+    "url": "/api/customer/areas",
+    "title": "Get Area List",
+    "name": "Get_Area_List",
+    "group": "Area",
+    "parameter": {
+      "fields": {
+        "Query String": [
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "city_id",
+            "description": "<p>id of the city to get its areas.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"city\": {\n            \"areas\": [\n                {\n                    \"_id\": \"5cd01b02c1a6f3317fd9f072\",\n                    \"name\": \"sector-14\",\n                    \"created_at\": \"2019-05-06T11:31:14.865Z\",\n                    \"updated_at\": \"2019-05-06T11:31:14.865Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"5cd01b0cf03a5831a00732d9\",\n                    \"name\": \"sector-12\",\n                    \"created_at\": \"2019-05-06T11:31:24.523Z\",\n                    \"updated_at\": \"2019-05-06T11:31:24.523Z\",\n                    \"__v\": 0\n                }\n            ],\n            \"_id\": \"5cd01c1839b32d325085052d\",\n            \"name\": \"Gurgaon\",\n            \"created_at\": \"2019-05-06T11:35:52.520Z\",\n            \"updated_at\": \"2019-05-06T11:35:52.520Z\",\n            \"__v\": 0\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ValidationError",
+            "description": "<p>Facebook Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Facebook error invalid token:",
+          "content": "{\n    \"success\": false,\n    \"singleStringMessage\": \"400 - {\\\"error\\\":{\\\"message\\\":\\\"Error validating access token: Session has expired on Thursday, 02-May-19 09:00:00 PDT. The current time is Thursday, 09-May-19 05:47:57 PDT.\\\",\\\"type\\\":\\\"OAuthException\\\",\\\"code\\\":190,\\\"error_subcode\\\":463,\\\"fbtrace_id\\\":\\\"AYxofrM9uxc\\\"}}\",\n    \"error\": {\n        \"error\": {\n            \"message\": \"Error validating access token: Session has expired on Thursday, 02-May-19 09:00:00 PDT. The current time is Thursday, 09-May-19 05:47:57 PDT.\",\n            \"type\": \"OAuthException\",\n            \"code\": 190,\n            \"error_subcode\": 463,\n            \"fbtrace_id\": \"AYxofrM9uxc\"\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/common.js",
+    "groupTitle": "Area"
+  },
+  {
     "type": "post",
     "url": "/api/customer/auth/change-password",
     "title": "Change Password",
