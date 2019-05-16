@@ -555,7 +555,7 @@ define({ "api": [
         },
         {
           "title": "Otp is invalid:",
-          "content": "{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"otp_not_verified\",\n        \"type\": \"error\"\n    }\n}",
+          "content": "{\n    \"success\": false,\n    \"code\": {\n        \"code\": 422,\n        \"name\": \"UNPROCESSABLE_ENTITY\",\n        \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n    },\n    \"singleStringMessage\": \"Invalid otp. Please try again.\"\n    error: {\n           message: \"Invalid otp. Please try again.\"\n    }\n}",
           "type": "json"
         }
       ]
