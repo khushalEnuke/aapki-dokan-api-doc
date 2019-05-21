@@ -616,6 +616,78 @@ define({ "api": [
     "groupTitle": "Category"
   },
   {
+    "type": "post",
+    "url": "/api/customer/product",
+    "title": "Get Products",
+    "name": "Get_Products",
+    "group": "Product",
+    "parameter": {
+      "fields": {
+        "Query String": [
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "store_id",
+            "description": "<p>Id of the store.</p>"
+          },
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "category_id",
+            "description": "<p>(optional) Parent catgeory id if all selected.</p>"
+          },
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "subcategory_id",
+            "description": "<p>(optional) Sub category of the products require.</p>"
+          },
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "search",
+            "description": "<p>(optional) search keyword by name of product.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n   \"success\": true,\n   \"code\": 200,\n   \"data\": {\n       \"subcategories\": [\n           {\n               \"_id\": \"5cdac8de1c9d4400003f31b6\",\n               \"status\": 2,\n               \"name\": \"cheese\",\n               \"store_id\": \"5cd1259b63aff817c37afb02\",\n               \"parent\": \"5cd55cec828e75341ca089cb\",\n               \"products\": []\n           },\n           {\n               \"_id\": \"5cd55d96828e75341ca089cc\",\n               \"status\": 1,\n               \"parent\": \"5cd55cec828e75341ca089cb\",\n               \"name\": \"Milk\",\n               \"store_id\": \"5cd1259b63aff817c37afb02\",\n               \"created_at\": \"2019-05-10T11:16:38.799Z\",\n               \"updated_at\": \"2019-05-10T11:16:38.799Z\",\n               \"__v\": 0,\n               \"products\": [\n                   {\n                       \"_id\": \"5ce3db99f558770b9cab1170\",\n                       \"is_featured\": true,\n                       \"pictures\": [\n                           \"nfufhuhsdfu\",\n                           \"fihwfuisudfdgsu\"\n                       ],\n                       \"name\": \"amul milk\",\n                       \"store_id\": \"5cd1259b63aff817c37afb02\",\n                       \"category_id\": \"5cd55d96828e75341ca089cc\",\n                       \"size\": \"1 litre\",\n                       \"price\": {\n                           \"cost_price\": 20,\n                           \"sale_price\": 30\n                       },\n                       \"stock_quantity\": 10,\n                       \"created_at\": \"2019-05-21T11:06:01.448Z\",\n                       \"updated_at\": \"2019-05-21T11:06:01.448Z\",\n                       \"__v\": 0\n                   }\n               ]\n           }\n       ]\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ValidationError",
+            "description": "<p>Store Id is a required field.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Store Id is a required field:",
+          "content": "{\n   \"success\": false,\n   \"code\": {\n       \"code\": 422,\n       \"name\": \"UNPROCESSABLE_ENTITY\",\n       \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n   },\n   \"singleStringMessage\": \"The Store Id is a required field\",\n   \"error\": {\n       \"validation\": {\n           \"store_id\": [\n               \"The Store Id is a required field\"\n           ]\n       }\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/product.js",
+    "groupTitle": "Product"
+  },
+  {
     "type": "get",
     "url": "/api/customer/store",
     "title": "Get Stores",
@@ -689,7 +761,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"featured_products\": [\n            {\n                \"is_featured\": true,\n                \"_id\": \"5cd90454f4d831114f724585\",\n                \"name\": \"amul milk\",\n                \"store_id\": \"5cd1259b63aff817c37afb02\",\n                \"category_id\": \"5cd55d96828e75341ca089cc\",\n                \"variant\": [\n                    {\n                        \"price\": {\n                            \"cost_price\": 20,\n                            \"sale_price\": 30\n                        },\n                        \"pictures\": [\n                            \"nfufhuhsdfu\",\n                            \"fihwfuisudfdgsu\"\n                        ],\n                        \"size\": \"1 litre\",\n                        \"stock_quantity\": 10\n                    }\n                ],\n                \"created_at\": \"2019-05-13T05:44:52.470Z\",\n                \"updated_at\": \"2019-05-13T05:44:52.470Z\",\n                \"__v\": 0\n            }\n        ],\n        \"best_selling_products\": [],\n        \"categories\": [\n            {\n                \"status\": 1,\n                \"parent\": null,\n                \"_id\": \"5cd55cec828e75341ca089cb\",\n                \"name\": \"Dairy Products\",\n                \"store_id\": \"5cd1259b63aff817c37afb02\",\n                \"created_at\": \"2019-05-10T11:13:48.073Z\",\n                \"updated_at\": \"2019-05-10T11:13:48.073Z\",\n                \"__v\": 0\n            }\n        ],\n        \"store\": {\n            \"address\": {\n                \"house_no\": \"21/3\",\n                \"street\": \"XYZ street\",\n                \"area_id\": \"5cd01b02c1a6f3317fd9f072\",\n                \"city_id\": \"5cd01c1839b32d325085052d\"\n            },\n            \"owner\": {\n                \"full_name\": \"khushal pahuja\",\n                \"contact_number\": \"9711669906\"\n            },\n            \"picture\": null,\n            \"status\": 3,\n            \"_id\": \"5cd1259b63aff817c37afb02\",\n            \"email\": \"khushal.pahuja@enukesoftware.com\",\n            \"contact_number\": \"9711669906\",\n            \"password\": \"$2b$10$.tTIIkskAAhZqEg20cfVx.sHXlnPB93/zVLBFldR6anWN1Qdc8MIC\",\n            \"name\": \"XYZ store\",\n            \"commission\": 2,\n            \"verification_token\": \"1e8c0eed-6864-4492-977f-7cd49263a8b0\",\n            \"created_at\": \"2019-05-07T06:28:43.580Z\",\n            \"updated_at\": \"2019-05-07T06:28:43.580Z\",\n            \"__v\": 0\n        }\n    }\n}",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"featured_products\": [\n            {\n                \"price\": {\n                    \"cost_price\": 20,\n                    \"sale_price\": 30\n                },\n                \"is_featured\": true,\n                \"pictures\": [\n                    \"nfufhuhsdfu\",\n                    \"fihwfuisudfdgsu\"\n                ],\n                \"_id\": \"5ce3db99f558770b9cab1170\",\n                \"name\": \"amul milk\",\n                \"store_id\": \"5cd1259b63aff817c37afb02\",\n                \"category_id\": \"5cd55d96828e75341ca089cc\",\n                \"size\": \"1 litre\",\n                \"stock_quantity\": 10,\n                \"created_at\": \"2019-05-21T11:06:01.448Z\",\n                \"updated_at\": \"2019-05-21T11:06:01.448Z\",\n                \"__v\": 0\n            }\n        ],\n        \"best_selling_products\": [],\n        \"categories\": [\n            {\n                \"status\": 1,\n                \"parent\": null,\n                \"_id\": \"5cd55cec828e75341ca089cb\",\n                \"name\": \"Dairy Products\",\n                \"store_id\": \"5cd1259b63aff817c37afb02\",\n                \"created_at\": \"2019-05-10T11:13:48.073Z\",\n                \"updated_at\": \"2019-05-10T11:13:48.073Z\",\n                \"__v\": 0\n            }\n        ],\n        \"store\": {\n            \"address\": {\n                \"house_no\": \"21/3\",\n                \"street\": \"XYZ street\",\n                \"area_id\": \"5cd01b02c1a6f3317fd9f072\",\n                \"city_id\": \"5cd01c1839b32d325085052d\"\n            },\n            \"owner\": {\n                \"full_name\": \"khushal pahuja\",\n                \"contact_number\": \"9711669906\"\n            },\n            \"picture\": null,\n            \"status\": 3,\n            \"_id\": \"5cd1259b63aff817c37afb02\",\n            \"email\": \"khushal.pahuja@enukesoftware.com\",\n            \"contact_number\": \"9711669906\",\n            \"password\": \"$2b$10$.tTIIkskAAhZqEg20cfVx.sHXlnPB93/zVLBFldR6anWN1Qdc8MIC\",\n            \"name\": \"XYZ store\",\n            \"commission\": 2,\n            \"verification_token\": \"1e8c0eed-6864-4492-977f-7cd49263a8b0\",\n            \"created_at\": \"2019-05-07T06:28:43.580Z\",\n            \"updated_at\": \"2019-05-07T06:28:43.580Z\",\n            \"__v\": 0\n        }\n    }\n}",
           "type": "json"
         }
       ]
