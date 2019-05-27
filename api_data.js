@@ -616,6 +616,38 @@ define({ "api": [
     "groupTitle": "Category"
   },
   {
+    "type": "get",
+    "url": "/api/customer/category/:id",
+    "title": "Get Category details",
+    "name": "Get_Category_details",
+    "group": "Category",
+    "parameter": {
+      "fields": {
+        "Params": [
+          {
+            "group": "Params",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of the category to get subcategories of.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"category\": {\n            \"_id\": \"5ce533a8a9f87e3f2478103d\",\n            \"status\": 1,\n            \"parent\": null,\n            \"store_id\": \"5ce513d4a2041b29b2543750\",\n            \"name\": \"Refreshments\",\n            \"picture\": \"ivvfch0jvz5g6y6.png\",\n            \"created_at\": \"2019-05-22T11:34:00.018Z\",\n            \"updated_at\": \"2019-05-22T11:34:00.018Z\",\n            \"__v\": 0,\n            \"subcategories\": [\n                {\n                    \"_id\": \"5ce691368c74ad496365d5b0\",\n                    \"status\": 1,\n                    \"parent\": \"5ce533a8a9f87e3f2478103d\",\n                    \"store_id\": \"5ce513d4a2041b29b2543750\",\n                    \"name\": \"Soft Drinks\",\n                    \"picture\": \"ivvfehvjw0mq6ve.jpg\",\n                    \"created_at\": \"2019-05-23T12:25:26.112Z\",\n                    \"updated_at\": \"2019-05-23T12:25:26.112Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"5ce69a6ac977714e4b66f0f4\",\n                    \"status\": 1,\n                    \"parent\": \"5ce533a8a9f87e3f2478103d\",\n                    \"store_id\": \"5ce513d4a2041b29b2543750\",\n                    \"name\": \"Water\",\n                    \"picture\": \"ivvffgrjw0o4pcm.jpg\",\n                    \"created_at\": \"2019-05-23T13:04:42.877Z\",\n                    \"updated_at\": \"2019-05-23T13:04:42.877Z\",\n                    \"__v\": 0\n                }\n            ]\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/category.js",
+    "groupTitle": "Category"
+  },
+  {
     "type": "post",
     "url": "/api/customer/product",
     "title": "Get Products",
