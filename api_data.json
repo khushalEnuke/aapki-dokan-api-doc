@@ -648,7 +648,7 @@
     "groupTitle": "Category"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "/api/customer/product",
     "title": "Get Products",
     "name": "Get_Products",
