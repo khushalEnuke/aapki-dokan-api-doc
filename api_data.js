@@ -950,7 +950,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"address\": [\n            {\n                \"_id\": \"5ceb885237818d1bb9417e1e\",\n                \"street\": \"xyz1 street\",\n                \"house_no\": \"123\",\n                \"area_id\": \"5cd01b02c1a6f3317fd9f072\",\n                \"city_id\": \"5cd01c1839b32d325085052d\",\n                \"alias\": \"home\"\n            }\n        ]\n    }\n}",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"address\": [\n            {\n                \"_id\": \"5ced0d960945c93eb129d2f5\",\n                \"house_no\": \"123\",\n                \"locality\": \"xyz colony\",\n                \"city_id\": \"5cd01c1839b32d325085052d\",\n                \"alias\": \"home\",\n                \"landmark\": \"xyz park\",\n                \"email\": \"khushal@gmail.com\",\n                \"contact_number\": \"9711669906\"\n            }\n        ]\n    }\n}",
           "type": "json"
         }
       ]
