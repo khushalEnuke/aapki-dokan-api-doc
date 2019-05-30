@@ -743,6 +743,38 @@ define({ "api": [
     "groupTitle": "Order"
   },
   {
+    "type": "get",
+    "url": "/api/customer/order",
+    "title": "Order History",
+    "name": "Order_History",
+    "group": "Order",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>'Bearer' + user token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n   \"success\": true,\n   \"code\": 200,\n   \"data\": {\n       \"orders\": [\n           {\n               \"_id\": \"5cefc0819527d436cfca3b21\",\n               \"address\": {\n                   \"pickup\": {\n                       \"street\": \"test street\",\n                       \"area_id\": \"5cd01b02c1a6f3317fd9f072\",\n                       \"city_id\": \"5cd01c1839b32d325085052d\"\n                   },\n                   \"delivery\": {\n                       \"house_no\": \"23-R\",\n                       \"locality\": \"xyz colony\",\n                       \"city_id\": \"5cd01c1839b32d325085052d\",\n                       \"alias\": \"home\",\n                       \"landmark\": \"xyz park\",\n                       \"email\": \"khushal@gmail.com\",\n                       \"contact_number\": \"9711669906\",\n                       \"full_name\": \"khushal\"\n                   }\n               },\n               \"status\": 1,\n               \"is_express_delivery\": false,\n               \"payment_type\": 1,\n               \"discount\": 0,\n               \"deliver_start_time\": \"2019-05-30T11:37:37.789Z\",\n               \"deliver_end_time\": \"2019-05-30T13:37:37.789Z\",\n               \"customer_id\": \"5ce7f068b9c00379c7d8564b\",\n               \"store_id\": \"5ce513d4a2041b29b2543750\",\n               \"products\": [\n                   {\n                       \"pictures\": [\n                           \"ivvffb3jvz9rs8h.jpg\"\n                       ],\n                       \"_id\": \"5cefc0819527d436cfca3b22\",\n                       \"product_id\": \"5ce55003a047874d7fc513ed\",\n                       \"size\": \"250 g\",\n                       \"price\": 30,\n                       \"count\": 2,\n                       \"name\": \"Bru Coffee\"\n                   }\n               ],\n               \"total_amount\": 60,\n               \"created_at\": \"2019-05-30T11:37:37.866Z\",\n               \"updated_at\": \"2019-05-30T11:37:37.866Z\",\n               \"__v\": 0,\n               \"store\": {\n                   \"_id\": \"5ce513d4a2041b29b2543750\",\n                   \"picture\": \"ivvf88ijvz0lk37.png\",\n                   \"status\": 3,\n                   \"name\": \"Health Store\",\n                   \"address\": {\n                       \"street\": \"test street\",\n                       \"area_id\": \"5cd01b02c1a6f3317fd9f072\",\n                       \"city_id\": \"5cd01c1839b32d325085052d\"\n                   },\n                   \"commission\": 10,\n                   \"owner\": {\n                       \"full_name\": \"Aditya\",\n                       \"email\": \"aditya@gmail.com\",\n                       \"contact_number\": \"1234567890\",\n                       \"password\": \"$2b$10$3/e.Z01e6SoeAht85tyrK.oqiMd/amt.WqfEY7qeYj.VZ5Lx.lRue\"\n                   },\n                   \"timings\": {\n                       \"open_time\": \"08:00\",\n                       \"close_time\": \"20:00\"\n                   },\n                   \"has_express_delivery\": true,\n                   \"created_at\": \"2019-05-22T09:18:12.315Z\",\n                   \"updated_at\": \"2019-05-22T09:18:12.315Z\",\n                   \"__v\": 0\n               }\n           }\n       ]\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/order.js",
+    "groupTitle": "Order"
+  },
+  {
     "type": "post",
     "url": "/api/customer/product/availability",
     "title": "Check Products Availability",
