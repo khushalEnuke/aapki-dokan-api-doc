@@ -662,6 +662,13 @@
             "optional": false,
             "field": "coupon_code",
             "description": "<p>Coupon code to be applied.</p>"
+          },
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "store_id",
+            "description": "<p>ID of the store to which coupon is applied.</p>"
           }
         ]
       }
