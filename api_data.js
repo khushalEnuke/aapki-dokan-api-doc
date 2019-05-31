@@ -804,26 +804,12 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "    HTTP/1.1 200 OK\n{\n   \"success\": true,\n   \"code\": 200,\n   \"data\": {\n       \"messages\": \"All Products Are Available\"\n   }\n}",
+          "content": "    HTTP/1.1 200 OK\n{\n   \"success\": true,\n   \"code\": 200,\n   \"data\": {\n       \"message\": \"All Products Are Available\",\n       \"outOfStockProducts\": []\n   }\n}",
           "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "ValidationError",
-            "description": "<p>Some Products Are Not Available Right Now.</p>"
-          }
-        ]
-      },
-      "examples": [
+        },
         {
-          "title": "Some Products Are Not Available Right Now:",
-          "content": "{\n   \"success\": false,\n   \"code\": {\n       \"code\": 422,\n       \"name\": \"UNPROCESSABLE_ENTITY\",\n       \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n   },\n   \"singleStringMessage\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\",\n   \"error\": {\n       \"validation\": {\n           \"message\": \"Some Products Are Not Available Right Now\",\n           \"outOfStockProducts\": [\n               {\n                   \"_id\": \"5ce55003a047874d7fc513ed\",\n                   \"stock_quantity\": 10,\n                   \"quantity_ordered\": 100\n               }\n           ]\n       }\n   }\n}",
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n   \"success\": true,\n   \"code\": 200,\n   \"data\": {\n       \"message\": \"Some Products Are Not Available Right Now\",\n       \"outOfStockProducts\": [\n           {\n               \"_id\": \"5ce55003a047874d7fc513ed\",\n               \"stock_quantity\": 12,\n               \"quantity_ordered\": 100\n           }\n       ]\n   }\n}",
           "type": "json"
         }
       ]
