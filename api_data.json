@@ -648,6 +648,57 @@
     "groupTitle": "Category"
   },
   {
+    "type": "get",
+    "url": "/api/customer/coupon/check",
+    "title": "Check Coupon Validation",
+    "name": "Coupon_Validation",
+    "group": "Coupon",
+    "parameter": {
+      "fields": {
+        "Query String": [
+          {
+            "group": "Query String",
+            "type": "String",
+            "optional": false,
+            "field": "coupon_code",
+            "description": "<p>Coupon code to be applied.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"coupon\": {\n            \"store\": {\n                \"name\": \"Health Store\",\n                \"_id\": \"5ce513d4a2041b29b2543750\"\n            },\n            \"status\": 1,\n            \"_id\": \"5cf10cda19e5af3ad9d1dd38\",\n            \"code\": \"10OFF\",\n            \"type\": 2,\n            \"value\": 10,\n            \"start_date\": \"2019-05-31T11:05:56.000Z\",\n            \"end_date\": \"2019-06-04T11:05:56.000Z\",\n            \"created_at\": \"2019-05-31T11:15:38.820Z\",\n            \"updated_at\": \"2019-05-31T11:15:38.820Z\",\n            \"__v\": 0\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ValidationError",
+            "description": "<p>Coupon Code is Invalid.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Coupon Code is Invalid.",
+          "content": "{\n   \"success\": false,\n   \"code\": {\n       \"code\": 422,\n       \"name\": \"UNPROCESSABLE_ENTITY\",\n       \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n   },\n   \"singleStringMessage\": \"Coupon Code is Not Valid\",\n   \"error\": {\n       \"validation\": {\n           \"coupon_code\": [\n               \"Coupon Code is Not Valid\"\n           ]\n       }\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/coupon.js",
+    "groupTitle": "Coupon"
+  },
+  {
     "type": "post",
     "url": "/api/customer/order/checkout",
     "title": "Order Checkout",
