@@ -668,30 +668,30 @@
     },
     "parameter": {
       "fields": {
-        "Query String": [
+        "Body": [
           {
-            "group": "Query String",
+            "group": "Body",
             "type": "String",
             "optional": false,
             "field": "store_id",
             "description": "<p>Id of the store.</p>"
           },
           {
-            "group": "Query String",
+            "group": "Body",
             "type": "String",
             "optional": false,
             "field": "slot_id",
             "description": "<p>Id of the Slot in which it is to be delivered.</p>"
           },
           {
-            "group": "Query String",
+            "group": "Body",
             "type": "String",
             "optional": false,
             "field": "address_id",
             "description": "<p>Address Id of the customer at which the order is to be delivered.</p>"
           },
           {
-            "group": "Query String",
+            "group": "Body",
             "type": "Object[]",
             "optional": false,
             "field": "products",
@@ -782,16 +782,16 @@
     "group": "Product",
     "parameter": {
       "fields": {
-        "Query String": [
+        "Body": [
           {
-            "group": "Query String",
+            "group": "Body",
             "type": "String",
             "optional": false,
             "field": "store_id",
             "description": "<p>Id of the store.</p>"
           },
           {
-            "group": "Query String",
+            "group": "Body",
             "type": "Object[]",
             "optional": false,
             "field": "products",
