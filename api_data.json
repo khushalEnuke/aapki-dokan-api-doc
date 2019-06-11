@@ -1259,6 +1259,38 @@
     "groupTitle": "User"
   },
   {
+    "type": "get",
+    "url": "/api/customer/user/profile",
+    "title": "Get Profile",
+    "name": "Get_Profile",
+    "group": "User",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>'Bearer' + user token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"customer\": {\n            \"picture\": \"ivvf6tmjwrhh057.png\",\n            \"gmail_id\": null,\n            \"facebook_id\": null,\n            \"status\": 1,\n            \"_id\": \"5cf609a8a460b46232cb3e41\",\n            \"email\": \"khushal.pahuja@enukesoftware.cm\",\n            \"password\": \"$2b$10$PqV6nF6Sp36ZjAmgWGU97OEQmfVgVGmF3XBJKeQUzarzAkbKrFJ0y\",\n            \"full_name\": \"Khushal Pahuja 1\",\n            \"contact_number\": \"9711669906\",\n            \"verification_token\": null,\n            \"address\": [],\n            \"created_at\": \"2019-06-04T06:03:20.802Z\",\n            \"updated_at\": \"2019-06-11T07:28:06.505Z\",\n            \"__v\": 0\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/user.js",
+    "groupTitle": "User"
+  },
+  {
     "type": "put",
     "url": "/api/customer/user/address/:id",
     "title": "Update Address",
@@ -1365,6 +1397,86 @@
         {
           "title": "House no is Required:",
           "content": "{\n    \"success\": false,\n    \"code\": {\n        \"code\": 422,\n        \"name\": \"UNPROCESSABLE_ENTITY\",\n        \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n    },\n    \"singleStringMessage\": \"House No. is a required field\",\n    \"error\": {\n        \"validation\": {\n            \"house_no\": [\n                \"House No. is a required field\"\n            ]\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "aapki-dokan-api/routes/apis/customer/user.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "put",
+    "url": "/api/customer/user/profile/:id",
+    "title": "Update Profile",
+    "name": "Update_Profile",
+    "group": "User",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>'Bearer' + user token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Params": [
+          {
+            "group": "Params",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id of the User to be updated</p>"
+          }
+        ],
+        "Body": [
+          {
+            "group": "Body",
+            "type": "String",
+            "optional": false,
+            "field": "full_name",
+            "description": "<p>(optional) name of the user.</p>"
+          },
+          {
+            "group": "Body",
+            "type": "File",
+            "optional": false,
+            "field": "picture",
+            "description": "<p>(optional) Profile Picture .</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"customer\": {\n            \"picture\": null,\n            \"gmail_id\": null,\n            \"facebook_id\": null,\n            \"status\": 1,\n            \"_id\": \"5ce7f068b9c00379c7d8564b\",\n            \"email\": \"khushal.pahuja@enukesoftware.com\",\n            \"contact_number\": \"9711669906\",\n            \"full_name\": \"khushal pahuja\",\n            \"password\": \"$2b$10$ooranEJziyIxjfLLprkIVuVjjBhRfZ72DXqlhGNk4K2CyziGfQ/MC\",\n            \"verification_token\": \"b7274e6b-690b-46da-9dda-631d013743e2\",\n            \"address\": [\n                {\n                    \"_id\": \"5ced0d960945c93eb129d2f5\",\n                    \"house_no\": \"123\",\n                    \"locality\": \"xyz colony\",\n                    \"city_id\": \"5cd01c1839b32d325085052d\",\n                    \"alias\": \"home\",\n                    \"landmark\": \"xyz park\",\n                    \"email\": \"khushal@gmail.com\",\n                    \"contact_number\": \"9711669906\"\n                }\n            ],\n            \"created_at\": \"2019-05-24T13:23:52.522Z\",\n            \"updated_at\": \"2019-05-28T10:29:42.517Z\",\n            \"__v\": 0\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ValidationError",
+            "description": "<p>Auth Token is Invalid.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Auth Token is Invalid:",
+          "content": "{\n    \"success\": false,\n    \"code\": {\n        \"code\": 422,\n        \"name\": \"UNPROCESSABLE_ENTITY\",\n        \"description\": \"Validation failed. The request and the format is valid, however the request was unable to process. For instance when sent data does not pass validation tests.\"\n    },\n    \"singleStringMessage\": \"Authentication token is invalid\",\n    \"error\": {\n        \"validation\": {\n            \"token\": [\n                \"Authentication token is invalid\"\n            ]\n        }\n    }\n}",
           "type": "json"
         }
       ]
